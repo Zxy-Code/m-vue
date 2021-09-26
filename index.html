@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="index_version_1.js"></script>-->
+    <script src="index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <h1 style="color: brown;">{{title}}</h1>
+            <h2 id="book">本月推荐：《{{book}}》</h2>
+            <h3 id="name">作者：{{auth}}</h3>
+            请输入要搜索的书名：<input type="text" v-model="query"> <button v-on:click="search">搜索</button>
+            <p style="color: lightseagreen;font-size: 24px;">提示：您要搜索的书籍是《{{query}}》吗？</p>
+            <div style="color:red;font-size: 30px;">{{msg}}</div>
+        </p>
+    </div>
+</body>
+</html>
+
+<script>
+    // index_version_1.js
+//    let $bookEl = document.querySelector('#book');
+//    let $nameEl = document.querySelector('#name');
+//    let vue = new Vue({
+//            book: '水浒传',
+//        }, $bookEl, 'book');
+//    // 模拟修改book的值
+//    setTimeout(() => {
+//        console.log(vue);
+//        vue.data.book = '红楼梦';
+//    }, 2000);
+
+    // index.js
+    let vue = new Vue({
+        el: '#app',
+        data: {
+            title: '',
+            book: '水浒传',
+            auth: '施耐庵',
+            query: null,
+            msg: ''
+        },
+        mounted() {
+            this.title = '中华书库'
+        },
+        methods: {
+            search() {
+                this.msg = this.query ? '搜索成功！' : '请输入书名后再搜索！';
+            }
+        }
+    })
+</script>
